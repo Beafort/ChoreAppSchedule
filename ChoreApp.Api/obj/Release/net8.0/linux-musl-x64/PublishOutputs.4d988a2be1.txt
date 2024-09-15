@@ -1,0 +1,4 @@
+D:\ChoreAppSchedule\linux64_musl\appsettings.Development.json
+D:\ChoreAppSchedule\linux64_musl\appsettings.json
+D:\ChoreAppSchedule\linux64_musl\ChoreApp.Api.pdb
+D:\ChoreAppSchedule\linux64_musl\ChoreApp.Api

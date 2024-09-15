@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "rSJlF8KNuusjqAdPuZ10z+yNl08JHwqQ0QaKXVwEyjI=",
+  "Source": "ChoreApp.Api",
+  "BasePath": "_content/ChoreApp.Api",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

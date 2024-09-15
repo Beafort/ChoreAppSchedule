@@ -1,0 +1,19 @@
+GET http://localhost:5270/chores/2024-09-11
+###
+POST http://localhost:5270/chores
+Content-Type: application/json
+
+{
+    "Name": "Test3",
+    "Deadline": "2024-09-10T17:26:22+07:00"
+}
+###
+DELETE http://localhost:5270/chores/1
+###
+PUT http://localhost:5270/chores/2
+Content-Type: application/json
+
+{
+    "Name": "Null",
+    "deadline": "2024-09-09T17:26:22"
+}
