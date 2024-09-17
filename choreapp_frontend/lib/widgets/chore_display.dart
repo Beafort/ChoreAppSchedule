@@ -1,10 +1,28 @@
 import 'package:choreapp_frontend/clients/chore_client.dart';
 import 'package:choreapp_frontend/models/chore.dart';
+import 'package:choreapp_frontend/widgets/chore_form.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+String formatTime(DateTime date) {
+  String temp = '';
+  int hour = date.hour;
+  int minute = date.minute;
+  if (hour < 10) {
+    temp += "0";
+  }
+  temp += hour.toString();
+  temp += ":";
+
+  if (minute < 10) {
+    temp += "0";
+  }
+  temp += minute.toString();
+  return temp;
+}
 
 class ChoreDisplay extends StatefulWidget {
   final DateTime date;
-
   const ChoreDisplay(this.date, {super.key});
 
   @override
@@ -14,11 +32,14 @@ class ChoreDisplay extends StatefulWidget {
 class ChoreDisplayState extends State<ChoreDisplay> {
   static const Color white = Color(0xFFFFFFFF);
   static const Color pastelGreen = Color(0xFF77DD77);
-  static const ChoreClient choreClient = ChoreClient();
   Future<List<Chore>>? choresList;
+  void _refresh() {
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
+    final choreClient = Provider.of<ChoreClient>(context);
     choresList = choreClient.getChoreByDateOnly(widget.date);
     return FractionallySizedBox(
       widthFactor: 0.88,
@@ -47,11 +68,19 @@ class ChoreDisplayState extends State<ChoreDisplay> {
                     title: Text(chore.name,
                         style: const TextStyle(
                             color: Color.fromARGB(255, 0, 0, 0))),
-                    subtitle: Text('Due on: ${chore.deadline}'),
-                    trailing: Checkbox(
-                      value: chore.done,
-                      onChanged: null,
-                    ),
+                    subtitle: Text('Due at: ${formatTime(chore.deadline)}'),
+                    trailing: Icon(chore.done ? Icons.check : Icons.close,
+                        color: chore.done ? Colors.green : Colors.red),
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) => ChoreFormPopup(
+                          selectedDay: chore.deadline,
+                          chore: chore,
+                          onSave: _refresh,
+                        ),
+                      );
+                    },
                   );
                 },
               );

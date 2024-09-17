@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import '../../models/chore.dart';
 
 class ChoreClient {
-  static const baseUrl = "http://10.0.2.2:5270/chores";
+  static const baseUrl = "https://beafort.com/chores";
   //GET
   Future<Chore> getChoreById(int id) async {
     final response = await http.get(Uri.parse("$baseUrl/$id"));
@@ -46,5 +46,27 @@ class ChoreClient {
         'deadline': chore.deadline.toIso8601String()
       }),
     );
+  }
+
+  Future<http.Response> putChore(Chore chore) async {
+    final url = Uri.parse(
+        '$baseUrl/${chore.id}'); // Update URL with the specific chore ID
+    return http.put(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(<String, dynamic>{
+        'name': chore.name,
+        'deadline': chore.deadline.toIso8601String(),
+        'done': chore.done,
+      }),
+    );
+  }
+
+  Future<http.Response> deleteChore(Chore chore) async {
+    final url = Uri.parse(
+        '$baseUrl/${chore.id}'); // Update URL with the specific chore ID
+    return http.delete(url);
   }
 }

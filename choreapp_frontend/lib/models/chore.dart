@@ -1,10 +1,10 @@
 class Chore {
-  final int id;
+  final int? id;
   final String name;
   final DateTime deadline;
   final bool done;
   const Chore(
-      {required this.id,
+      {this.id,
       required this.name,
       required this.deadline,
       required this.done});
