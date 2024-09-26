@@ -16,4 +16,4 @@ appsettings.*.json
 # Ignore IDE files (e.g., Visual Studio Code)
 .vscode/
 ChoreApp.Api/appsettings.json
-ChoreApp.Api/appsettings.json
+
