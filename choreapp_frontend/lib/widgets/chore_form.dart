@@ -130,7 +130,7 @@ class ChoreFormPopupState extends State<ChoreFormPopup> {
           Row(
             children: [
               const Text('Did any mf do this task ?'),
-              Spacer(), // Pushes the Switch to the right
+              const Spacer(), // Pushes the Switch to the right
               Switch(
                 value: done,
                 onChanged: (bool value) {

@@ -136,3 +136,4 @@ D:\ChoreAppSchedule\ChoreApp.Api\bin\Debug\net8.0\Microsoft.OpenApi.dll
 D:\ChoreAppSchedule\ChoreApp.Api\bin\Debug\net8.0\MinimalApis.Extensions.dll
 D:\ChoreAppSchedule\ChoreApp.Api\bin\Debug\net8.0\MiniValidation.dll
 D:\ChoreAppSchedule\ChoreApp.Api\obj\Debug\net8.0\ChoreApp.Api.MvcApplicationPartsAssemblyInfo.cs
+D:\ChoreAppSchedule\choreapp.api\obj\Debug\net8.0\ChoreApp.Api.sourcelink.json

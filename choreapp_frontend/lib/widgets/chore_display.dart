@@ -33,7 +33,7 @@ class ChoreDisplayState extends State<ChoreDisplay> {
   static const Color white = Color(0xFFFFFFFF);
   static const Color pastelGreen = Color(0xFF77DD77);
   Future<List<Chore>>? choresList;
-  void _refresh() {
+  Future<void> _refresh() async {
     setState(() {});
   }
 
@@ -45,49 +45,53 @@ class ChoreDisplayState extends State<ChoreDisplay> {
       widthFactor: 0.88,
       heightFactor: 0.5,
       child: Container(
-        decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 162, 199, 162),
-          border: Border.all(),
-          borderRadius: const BorderRadius.all(Radius.elliptical(4, 4)),
-        ),
-        child: FutureBuilder<List<Chore>>(
-          future: choresList,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (snapshot.hasError) {
-              return const Center(child: Text('Error loading chores'));
-            } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-              return const Center(child: Text('No chores found'));
-            } else {
-              return ListView.builder(
-                itemCount: snapshot.data!.length,
-                itemBuilder: (context, index) {
-                  final chore = snapshot.data![index];
-                  return ListTile(
-                    title: Text(chore.name,
-                        style: const TextStyle(
-                            color: Color.fromARGB(255, 0, 0, 0))),
-                    subtitle: Text('Due at: ${formatTime(chore.deadline)}'),
-                    trailing: Icon(chore.done ? Icons.check : Icons.close,
-                        color: chore.done ? Colors.green : Colors.red),
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) => ChoreFormPopup(
-                          selectedDay: chore.deadline,
-                          chore: chore,
-                          onSave: _refresh,
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(255, 162, 199, 162),
+            border: Border.all(),
+            borderRadius: const BorderRadius.all(Radius.elliptical(4, 4)),
+          ),
+          child: FutureBuilder<List<Chore>>(
+            future: choresList,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasError) {
+                return const Center(child: Text('Error loading chores'));
+              } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                return const Center(child: Text('No chores found'));
+              } else {
+                return RefreshIndicator(
+                  onRefresh: _refresh, // Define your refresh logic here
+                  child: ListView.builder(
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (context, index) {
+                      final chore = snapshot.data![index];
+                      return ListTile(
+                        title: Text(chore.name,
+                            style: const TextStyle(
+                                color: Color.fromARGB(255, 0, 0, 0))),
+                        subtitle: Text('Due at: ${formatTime(chore.deadline)}'),
+                        trailing: Icon(
+                          chore.done ? Icons.check : Icons.close,
+                          color: chore.done ? Colors.green : Colors.red,
                         ),
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) => ChoreFormPopup(
+                              selectedDay: chore.deadline,
+                              chore: chore,
+                              onSave: _refresh,
+                            ),
+                          );
+                        },
                       );
                     },
-                  );
-                },
-              );
-            }
-          },
-        ),
-      ),
+                  ),
+                );
+              }
+            },
+          )),
     );
   }
 }

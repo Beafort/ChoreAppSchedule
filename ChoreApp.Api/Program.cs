@@ -12,7 +12,7 @@ var connString = builder.Configuration.GetConnectionString("ChoreApp");
 builder.Services.AddDbContext<ChoreAppContext>(
 		options => options.UseNpgsql(connString)
 );
-
+builder.Services.AddAuthorization();
 var app = builder.Build();
 app.MapChoresEndpoints();
 await app.MigrateDbAsync();

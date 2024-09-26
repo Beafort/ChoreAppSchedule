@@ -1,0 +1,17 @@
+# Ignore all appsettings files
+appsettings.json
+appsettings.*.json
+
+# Ignore directories
+/bin/
+/obj/
+
+/# Ignore user-specific settings
+*.user
+*.suo
+
+# Ignore log files
+*.log
+
+# Ignore IDE files (e.g., Visual Studio Code)
+.vscode/
