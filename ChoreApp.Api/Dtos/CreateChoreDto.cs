@@ -9,12 +9,13 @@ namespace ChoreApp.Api.Dtos
 		string Name,
 		[Required]
 		DateTime Deadline,
+		int AssignedUserId,
 		bool Done = false
 	);
-	
-		
-		
-	
+
+
+
+
 }
 
 

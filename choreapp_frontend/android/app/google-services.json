@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "219244400700",
+    "project_id": "hust-cv-202416491",
+    "storage_bucket": "hust-cv-202416491.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:219244400700:android:b3a2dbaf63978635e03339",
+        "android_client_info": {
+          "package_name": "com.example.beaf"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsxmz-A7NGE7RxQZxaoOuPiWhIQozOHwA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

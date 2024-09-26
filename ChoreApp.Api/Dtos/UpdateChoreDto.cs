@@ -7,6 +7,7 @@ namespace ChoreApp.Api.Dtos
 	(
 		string Name,
 		DateTime Deadline,
+		int AssignedUserId,
 		bool Done
 	);
 }

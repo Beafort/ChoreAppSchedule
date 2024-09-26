@@ -14,7 +14,7 @@
     This is a placeholder for base href that will be replaced by the value of
     the `--base-href` argument provided to `flutter build`.
   -->
-  <base href="$FLUTTER_BASE_HREF">
+  <base href="../">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
@@ -35,4 +35,23 @@
 <body>
   <script src="flutter_bootstrap.js" async></script>
 </body>
+<script>
+  // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyAMkAsZqzdYk0ykoXtmqGVkDq576OwvUc4",
+  authDomain: "hust-cv-202416491.firebaseapp.com",
+  projectId: "hust-cv-202416491",
+  storageBucket: "hust-cv-202416491.appspot.com",
+  messagingSenderId: "219244400700",
+  appId: "1:219244400700:web:2f54d4a8fbfa3695e03339"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+</script>
 </html>

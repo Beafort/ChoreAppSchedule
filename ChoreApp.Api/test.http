@@ -1,4 +1,5 @@
-GET http://localhost:5270/chores/2024-09-11
+GET http://localhost:5270/chores/
+Authorization: Bearer CfDJ8Llo-NNeQwpHvD97MZvaD7x3hW50ZFHXw6WOTsJKMSNC5Hn43wBMMYYzuB4G9MbEN-jEkV0efZXvrPb-n0ChXGIq-ql-on_UJ7f2u-8tSZRygaxe9FEPjV3sDXAYVSeeOgyzeC0wYtEJRjKfA2p5egJsiJtFV8Yu0uu8Snl2rzb-j2rS6uyS3PSyxz3b-Udq5JyJShjdsq59Jc_tWwm8YCXK5KPaoVRHvjst79ZRU8gw396qk0H-n3V3P3ZKZzQGoZIwci7tjsTT_Ysai4TDIWfPWKIRswF8RFI-W04tfUxz6vahflk2Cw6Bbq01JT6PLfC4k3CCgSl9WHpUPamVEIjuVp5Ijx3UDLNlOKMPKTRgr3ol1HXYs4mOGHPkCDUnplScjd2pOXz9mklgGCv37oA1Alb1_Cd8LiWFN6eCR5cUZjGd8T7MS_Kkj6H5fpyPxnIEU5WI2BWDtDwahu0_K-km29PUkoUaXtfHUM42cnHAqFVmFfQ8qAJnWTGq5bZH8WwunV0CL4vjh5-N0GjHqua1_eSBY--wIU9m8JtjJ629qA5tvaPG0xJww6-IuEBKEGItoIXpxR-JcgXFmLPPt1MhA9GvsK-rSdI4eGh6Ey1sbtcxSeHP0k19r-kDPre7WSi4jcKN_xBgxvp96xZGpYYcBnZtf-0oLbHIt9cUi4wwQu5mW95xGefTsx1bUHAXrlrTnF6845xgWeSIJMcRCn4
 ###
 POST http://localhost:5270/chores
 Content-Type: application/json
@@ -16,4 +17,43 @@ Content-Type: application/json
 {
     "Name": "Null",
     "deadline": "2024-09-09T17:26:22"
+}
+###
+POST http://localhost:5270/register
+Content-Type: application/json
+
+{
+    "email": "beafortgm@gmail.com",
+    "password": "Hieukdmcqn1!"
+}
+###
+POST http://localhost:5270/user/register
+Content-Type: application/json
+
+{
+    "email": "beafortgm@gmail.com",
+    "password": "Hieukdmcqn1!",
+    "name": "Hieu"
+}
+###
+POST http://localhost:5270/login
+Content-Type: application/json
+
+{
+    "email": "beafortgm@gmail.com",
+    "password": "Hieukdmcqn1!"
+}
+###
+GET http://localhost:5270/user/f3a43e85-ba4f-4b22-9f38-657e8a6eff24
+Authorization: Bearer CfDJ8Llo-NNeQwpHvD97MZvaD7wrW1ipdRQzNvNd4pn2f5weSk8bciuU8EiOVPa3L3jcR749oFiFBHiBphgL9mQhwse-rMDVCYcbyqBKDlKiuvPpRp0rVsr_k4kKYSzd4ECawfdSxe47JPFHbIxcHXojS5Q5dSpArBpsqeM8TzavU4AfQXfT4U2Wl664Loig6YMN7jWnGmJ6spKftohiWXo9cswii89ORTeOIuhDGssiFyUh1WhoxFoed-wZjIUqBrty-iiFT5wBzhcBg31ac1jl2ZPUPnNnjTwUPnPIOSxw27vjzGNk-NA856cuxK_b4YpGzAav8svARJ7B9xIqvox8fkChLEtE8t-opxIVqBhgY3_Wcikgpvpba0aKavRqC6qa3-zFYn4b2o2ePy9F-fkyn768S5_DTXGiwvS5llBji_WqLtmzwa_9_QevjZZPB8uwm_HulCSPrrH6CG_JJEFfogUWOzRNR1GEg1ksE5OH23ZLk3f_WhMOE4Sjj9-qlW9hwYmWB_FGC2rln7rO5-kH3FEcD-YEjwQIievNR_VhBFBD2ZMtU6qSTrTOD9xTANLyJTFTJbVT7z33KHkm5Og1FseQPctbMM118x-5J9LdTuQfw97s_VoZ-wVVniwuD4bFn_0s8ysDZGvM-zWX4SK0AWnYLD5zb6eYy74YSjM5SzvGy7eXnOL6SgFzXzeA7y_fda25qq_kwvkNojIwedGLKJQ
+###
+DELETE http://localhost:5270/user/38ccdbc1-467c-4491-8c90-bdd1006e17d5
+Authorization:  Bearer CfDJ8Llo-NNeQwpHvD97MZvaD7ybqcvi2znDSevbEmNpBx4atKw73B-4q9l1bUE9JW3WkwTPdfgzb3voE--HvzCKdlDC98T3uP66oYFn3mM3kTVWitwOygFyDArTM4jFw3bYGdzk7AWJygU04gizQz-aqs7ODD6yAWwORjcT8awNFtb0DlNqBM9POfSeTWbYzYXo3XE_pedRZwn9qVrMbp0TfMhEzSJw6L5IqebJRW-0o1r3cIWg3hebeLxPKfxJw21Vtxclrxnp0BwKT21d2WCcwS7gfgqsyIqMB9kaEIGvdEBNxwXXbnjbs86BnyJyOGqxMBNznugiACa4Rq77cBa0AuClC9-yE0yg3iDvmTrrV_dd6M3ebTeAAtr-n7uTlwTpTNx3eyphY-1Lv_NY7MvGAhawqODKjWE_2wsQvWOYcnrHgaFnW4cDd4X2iZgkEW_L1Xqh6vwqJ3N0j0P7P0B5JIkasUwC__cpxmRWZQR5hEALptKiCBuhm8C8JOXFl-yZFH7d8vMBduRU-oI7gX-7_V62azEpAjaC3aiV3tEyI6E9KzZNU8kN2pKjmKfbg_9OmxAsvEXQ6eG5V4I8AANB7f2fl_Zt8w0F0pv7DwsjNc7Dry19zxrE7vd05_anrPfkKTukaumLtEVdAE9WOSwE99kDQTyWVg0rvM987jjbXhOyoJ0W_ZCXrOWYV4fBqnZPna35HdL_cLM43RtDSrxTaWQ
+###
+PUT  http://localhost:5270/user/f3a43e85-ba4f-4b22-9f38-657e8a6eff24/chores
+Authorization: Bearer CfDJ8Llo-NNeQwpHvD97MZvaD7wrW1ipdRQzNvNd4pn2f5weSk8bciuU8EiOVPa3L3jcR749oFiFBHiBphgL9mQhwse-rMDVCYcbyqBKDlKiuvPpRp0rVsr_k4kKYSzd4ECawfdSxe47JPFHbIxcHXojS5Q5dSpArBpsqeM8TzavU4AfQXfT4U2Wl664Loig6YMN7jWnGmJ6spKftohiWXo9cswii89ORTeOIuhDGssiFyUh1WhoxFoed-wZjIUqBrty-iiFT5wBzhcBg31ac1jl2ZPUPnNnjTwUPnPIOSxw27vjzGNk-NA856cuxK_b4YpGzAav8svARJ7B9xIqvox8fkChLEtE8t-opxIVqBhgY3_Wcikgpvpba0aKavRqC6qa3-zFYn4b2o2ePy9F-fkyn768S5_DTXGiwvS5llBji_WqLtmzwa_9_QevjZZPB8uwm_HulCSPrrH6CG_JJEFfogUWOzRNR1GEg1ksE5OH23ZLk3f_WhMOE4Sjj9-qlW9hwYmWB_FGC2rln7rO5-kH3FEcD-YEjwQIievNR_VhBFBD2ZMtU6qSTrTOD9xTANLyJTFTJbVT7z33KHkm5Og1FseQPctbMM118x-5J9LdTuQfw97s_VoZ-wVVniwuD4bFn_0s8ysDZGvM-zWX4SK0AWnYLD5zb6eYy74YSjM5SzvGy7eXnOL6SgFzXzeA7y_fda25qq_kwvkNojIwedGLKJQ
+Content-Type: application/json
+
+{
+    "choreIds": [7, 8, 9, 10]
 }

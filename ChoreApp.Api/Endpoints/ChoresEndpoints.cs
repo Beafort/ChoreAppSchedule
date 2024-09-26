@@ -19,21 +19,23 @@ public static class ChoresEndpoints
 		var group = app.MapGroup("chores");
 		group.MapGet("/", async (ChoreAppContext dbContext) =>
 		{
-			
-			var choreDtos = await dbContext.Chores.Select(chore => chore.ToChoreSummary())
+
+			var choreDtos = await dbContext.Chores.Include(chore => chore.AssignedUser)
+													.Select(chore => chore.ToChoreSummary())
 													.AsNoTracking()
 													.ToListAsync();
 			return choreDtos;
-		});
+		}).RequireAuthorization();
 		group.MapGet("/{date:datetime}", async (DateOnly date, ChoreAppContext dbContext) =>
 		{
 			var chores = await dbContext.Chores
-        	.Where(c => DateOnly.FromDateTime(c.Deadline) == date)
-        	.ToListAsync();
+			.Where(c => DateOnly.FromDateTime(c.Deadline) == date)
+			.Include(c => c.AssignedUser)
+			.ToListAsync();
 
-    		if (chores.Count == 0) return Results.NotFound();
+			if (chores.Count == 0) return Results.NotFound();
 
-    		return Results.Ok(chores.Select(c => c.ToChoreDetails()));
+			return Results.Ok(chores.Select(c => c.ToChoreSummary()));
 		});
 		group.MapGet("/{id:int}", async (int id, ChoreAppContext dbContext) =>
 		{
@@ -42,12 +44,13 @@ public static class ChoresEndpoints
 			return Results.Ok(chore.ToChoreDetails());
 		}).WithName(GetChoresEndpointsName);
 
-		group.MapPost("/", async (CreateChoreDto newChore, ChoreAppContext dbContext) => 
+		group.MapPost("/", async (CreateChoreDto newChore, ChoreAppContext dbContext) =>
 		{
 			Chore chore = newChore.ToChoreEntity();
+			chore.CreatedAt = DateTime.Now;
 			dbContext.Chores.Add(chore);
 			await dbContext.SaveChangesAsync();
-			return Results.CreatedAtRoute(GetChoresEndpointsName, new {id = chore.Id}, chore.ToChoreSummary());
+			return Results.CreatedAtRoute(GetChoresEndpointsName, new { id = chore.Id }, chore.ToChoreSummary());
 		})
 		.WithParameterValidation();
 		group.MapDelete("/{id}", async (int id, ChoreAppContext dbContext) =>
@@ -70,7 +73,7 @@ public static class ChoresEndpoints
 			await dbContext.SaveChangesAsync();
 			return Results.NoContent();
 		});
-		
+
 		return group;
 	}
 }

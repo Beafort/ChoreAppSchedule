@@ -12,17 +12,21 @@ public static class ChoreMapping
 			chore.Id,
 			chore.Name,
 			chore.Deadline,
-			chore.Done
+			chore.Done,
+			chore.AssignedUser != null ? chore.AssignedUser.Name : "Unassigned",
+			chore.CreatedAt
 		);
 	}
-	public static ChoreSummaryDto ToChoreDetails(this Chore chore)
+	public static ChoreDetailsDto ToChoreDetails(this Chore chore)
 	{
-		return new ChoreSummaryDto
+		return new ChoreDetailsDto
 		(
 			chore.Id,
 			chore.Name,
 			chore.Deadline,
-			chore.Done
+			chore.Done,
+			chore.AssignedUserId != null ? chore.AssignedUserId : String.Empty,
+			chore.CreatedAt
 		);
 	}
 	public static Chore ToChoreEntity(this CreateChoreDto chore)
@@ -40,6 +44,7 @@ public static class ChoreMapping
 			Id = id,
 			Name = chore.Name,
 			Deadline = chore.Deadline,
+			AssignedUserId = chore.AssignedUserId.ToString(),
 			Done = chore.Done
 		};
 	}
