@@ -47,7 +47,7 @@ public static class ChoresEndpoints
 		group.MapPost("/", async (CreateChoreDto newChore, ChoreAppContext dbContext) =>
 		{
 			Chore chore = newChore.ToChoreEntity();
-			chore.CreatedAt = DateTime.Now;
+			chore.CreatedAt = DateTime.Now.ToUniversalTime();
 			dbContext.Chores.Add(chore);
 			await dbContext.SaveChangesAsync();
 			return Results.CreatedAtRoute(GetChoresEndpointsName, new { id = chore.Id }, chore.ToChoreSummary());
