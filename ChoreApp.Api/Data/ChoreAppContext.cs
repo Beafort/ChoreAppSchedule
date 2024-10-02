@@ -32,6 +32,7 @@ namespace ChoreApp.Api.Data
 				.HasOne(c => c.AssignedUser)
 				.WithMany()
 				.HasForeignKey(c => c.AssignedUserId)
+				.IsRequired(false)
 				.OnDelete(DeleteBehavior.SetNull);
 		}
 	}
