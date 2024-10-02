@@ -1,3 +1,4 @@
 {
-    "dotnet.defaultSolution": "ChoreApp.sln"
+    "dotnet.defaultSolution": "ChoreApp.sln",
+    "cmake.sourceDirectory": "D:/Coding/ChoreAppSchedule/choreapp_frontend/linux"
 }

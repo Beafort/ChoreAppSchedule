@@ -1,33 +1,32 @@
 import 'package:choreapp_frontend/pages/home.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
+import 'package:choreapp_frontend/pages/login.dart'; // Import your login page
+import 'package:choreapp_frontend/pages/register.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:provider/provider.dart';
 import 'clients/chore_client.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+
+AndroidOptions _getAndroidOptions() => const AndroidOptions(
+      encryptedSharedPreferences: true,
+    );
+
+final storage = FlutterSecureStorage(aOptions: _getAndroidOptions());
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  if (kIsWeb) {
-    await Firebase.initializeApp(
-        name: 'choreapp_frontend',
-        options: DefaultFirebaseOptions.currentPlatform);
-  }
-
+  String? token = await storage.read(key: 'accessToken'); 
   runApp(
     MultiProvider(
       providers: [
         Provider<ChoreClient>(create: (_) => ChoreClient()),
       ],
-      child: const MainApp(),
+      child: MainApp(isLoggedIn: token != null),
     ),
   );
 }
 
 class SnackbarGlobal {
-  static GlobalKey<ScaffoldMessengerState> key =
-      GlobalKey<ScaffoldMessengerState>();
+  static GlobalKey<ScaffoldMessengerState> key = GlobalKey<ScaffoldMessengerState>();
 
   static void show(String message) {
     key.currentState!
@@ -37,7 +36,9 @@ class SnackbarGlobal {
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  final bool isLoggedIn;
+
+  const MainApp({super.key, required this.isLoggedIn});
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +47,13 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Home(),
-      scaffoldMessengerKey: SnackbarGlobal.key, // Your main home widget
+      initialRoute: isLoggedIn ? '/home' : '/login',
+      routes: {
+        '/login': (context) => const LoginForm(),
+        '/home': (context) => const Home(),
+        '/register' : (context) => const RegisterForm()
+      }, 
+      scaffoldMessengerKey: SnackbarGlobal.key,
     );
   }
 }

@@ -9,6 +9,8 @@ using ChoreApp.Api.Mappings;
 using Microsoft.IdentityModel.Tokens;
 using ChoreApp.Api.Dtos.UserDtos;
 using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ChoreApp.Api.Endpoints;
 
@@ -37,9 +39,11 @@ public static class UsersEndpoints
 
 			return Results.BadRequest(result.Errors);
 		});
-		group.MapGet("/{id}", async (string id, UserManager<User> userManager, ChoreAppContext dbContext) => 
+	
+		group.MapGet("/info", async ( UserManager<User> userManager, ChoreAppContext dbContext, ClaimsPrincipal claims) => 
 		{
-			User? user = await userManager.FindByIdAsync(id);
+			string userId = claims.Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value;
+			User? user = await userManager.FindByIdAsync(userId);
 			if(user is null)
 			{
 				return Results.NotFound();
@@ -89,6 +93,17 @@ public static class UsersEndpoints
 			}
 			return Results.BadRequest(result.Errors);
 		}).RequireAuthorization();
+		group.MapPost("/logout", async (SignInManager<User> signInManager,
+			[FromBody] object empty) =>
+		{
+			if (empty != null)
+			{
+				await signInManager.SignOutAsync();
+				return Results.Ok();
+			}
+			return Results.Unauthorized();
+		})
+		.RequireAuthorization();
 		return group;
 	}
 }

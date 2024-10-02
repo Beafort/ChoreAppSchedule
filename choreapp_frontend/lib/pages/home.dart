@@ -1,3 +1,5 @@
+import 'package:choreapp_frontend/clients/user_client.dart';
+import 'package:choreapp_frontend/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:choreapp_frontend/widgets/chore_week.dart';
 import 'package:intl/intl.dart';
@@ -5,7 +7,7 @@ import 'package:intl/intl.dart';
 String formatDate(DateTime date) {
   return DateFormat('yyyy-MM-dd').format(date);
 }
-
+UserClient userClient = UserClient();
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -16,7 +18,22 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   String? dayString;
   DateTime? day;
-
+  User? user;
+  @override
+  void initState() {
+    super.initState();
+    _loadUser(); 
+  }
+  Future<void> _loadUser() async {
+   
+    user = await userClient.getUser();
+    if(user == null){
+      if (!mounted) return;
+      Navigator.pushReplacementNamed(context, '/login');
+    }
+    setState(() {}); 
+    
+  }
   void _handleDaySelected(DateTime? selectedDay) {
     if (selectedDay != null) {
       dayString = formatDate(selectedDay);
@@ -26,9 +43,10 @@ class _HomeState extends State<Home> {
       day = null;
     }
   }
-
+  
   @override
   Widget build(BuildContext context) {
+    
     return MaterialApp(
       title: 'Chore Distribution App (Very early development)',
       theme: ThemeData(
@@ -37,7 +55,19 @@ class _HomeState extends State<Home> {
       home: Scaffold(
         key: GlobalKey(),
         appBar: AppBar(
-          title: const Text('Fetch Data Example'),
+          title: Text(user == null ? 'null' : user!.name),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                userClient.logout();
+                if (!mounted) return;
+                Navigator.pushReplacementNamed(context, '/login');
+              },
+              style: ButtonStyle(backgroundColor: WidgetStateProperty.all<Color>(Colors.red),),
+              child: const Text("Log out"),
+            ),
+    // You can add more buttons or widgets here if needed
+  ],
         ),
         body: Column(
           children: [
@@ -56,3 +86,5 @@ class _HomeState extends State<Home> {
     );
   }
 }
+
+

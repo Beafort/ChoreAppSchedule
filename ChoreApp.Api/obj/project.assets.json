@@ -4448,32 +4448,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Beafo\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\HIEU\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ChoreAppSchedule\\choreapp.api\\ChoreApp.Api.csproj",
+      "projectUniqueName": "D:\\Coding\\ChoreAppSchedule\\ChoreApp.Api\\ChoreApp.Api.csproj",
       "projectName": "ChoreApp.Api",
-      "projectPath": "D:\\ChoreAppSchedule\\choreapp.api\\ChoreApp.Api.csproj",
-      "packagesPath": "C:\\Users\\Beafo\\.nuget\\packages\\",
-      "outputPath": "D:\\ChoreAppSchedule\\choreapp.api\\obj\\",
+      "projectPath": "D:\\Coding\\ChoreAppSchedule\\ChoreApp.Api\\ChoreApp.Api.csproj",
+      "packagesPath": "C:\\Users\\HIEU\\.nuget\\packages\\",
+      "outputPath": "D:\\Coding\\ChoreAppSchedule\\ChoreApp.Api\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Beafo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\HIEU\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -4549,7 +4541,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.402/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

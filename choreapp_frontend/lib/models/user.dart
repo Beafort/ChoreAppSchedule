@@ -1,24 +1,23 @@
 import 'package:choreapp_frontend/clients/chore_client.dart';
 
 import 'chore.dart';
-import 'package:provider/provider.dart';
 
 class User {
   final String? id;
   final String name;
-  final String password;
+  final String? email;
   final List<Chore>? chores;
   const User(
-      {this.id, required this.name, required this.password, this.chores});
+      {this.id, required this.name, this.email, this.chores});
   factory User.fromJson(Map<String, dynamic> json) {
     return switch (json) {
       {
         'id': String id,
         'name': String name,
-        'password': String password,
-        'chores': List<Chore> chores,
+        'email': String email,
+        
       } =>
-        User(id: id, name: name, password: password, chores: chores),
+        User(id: id, name: name, email: email),
       _ => throw const FormatException('Failed to load json')
     };
   }

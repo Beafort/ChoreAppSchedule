@@ -14,7 +14,7 @@ builder.Services.AddDbContext<ChoreAppContext>(
 	options => options.UseNpgsql(connString)
 );
 builder.Services.AddAuthorization();
-builder.Services.AddIdentityApiEndpoints<User>()
+builder.Services.AddIdentityApiEndpoints<User>(options => options.User.RequireUniqueEmail = true)
 		.AddEntityFrameworkStores<ChoreAppContext>();
 var app = builder.Build();
 app.MapIdentityApi<User>();

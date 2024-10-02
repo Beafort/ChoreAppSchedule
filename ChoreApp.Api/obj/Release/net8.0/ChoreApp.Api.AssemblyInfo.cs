@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ChoreApp.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0330263fc6993b22f02c04b50ee0dda6e5de04ac")]
 [assembly: System.Reflection.AssemblyProductAttribute("ChoreApp.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ChoreApp.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
