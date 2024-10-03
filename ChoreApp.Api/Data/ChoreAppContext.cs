@@ -33,13 +33,7 @@ namespace ChoreApp.Api.Data
 				.HasOne(c => c.AssignedUser)
 				.WithMany()
 				.OnDelete(DeleteBehavior.SetNull);
-			modelBuilder.Entity<User>()
-				.HasMany(u => u.Groups)
-				.WithMany()
-				.UsingEntity("UserGroup",
-				l => l.HasOne(typeof(Group)).WithMany().HasForeignKey("GroupsId").HasPrincipalKey(nameof(Group.Id)),
-				r => r.HasOne(typeof(User)).WithMany().HasForeignKey("UsersId").HasPrincipalKey(nameof(User.Id)),
-				j => j.HasKey("GroupsId", "UsersId"));
+			
 		}
 	}
 }

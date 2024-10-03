@@ -20,5 +20,6 @@ var app = builder.Build();
 app.MapIdentityApi<User>();
 app.MapChoresEndpoints();
 app.MapUsersEndpoints();
+app.MapGroupsEndpoints();
 await app.MigrateDbAsync();
 app.Run();

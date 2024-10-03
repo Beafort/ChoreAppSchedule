@@ -76,3 +76,13 @@ Content-Type: application/json
 ###
 GET http://localhost:5270/user/info
 Authorization: Bearer CfDJ8HzTZ3NU6dpKt_z5BcMhzxFD6Hk3KTllBIrsvZv80mCYhqONYkfw9fTsRnyCPdjfMN-rvzGfKPruDHMtloOUpwcsNALmxRnU5OdLPzgbCCb0F1nnZ5aTcMCko_LmFqboWQLatiqCbfjQAMQQQtbY--dF3k2Cjn1sIby9TyI3WJq-XcMt83yfgMFsbHmGU5i6KYWP-qEruToR0rhPRfcyI-Gz8P_2oGnaof8iqj-v4FyMCP20tp3XUTDTXBB6zSxinGJpPFwQbamSNSgBQyBszGTykxZWYT6dIXG5t3bEgBrSlfQKT3q5J4dMeRS-rPqIA8kB6EmdkAMkdgKSypJXKvpy1deM6b8tU9t7zzWeu_rd4Ev3lMPUedvhi5dQa1yDNlvkec9v6d4Q--0ugXNSaOHVR_GJ2NADjNSwe2s6v0e9Qdl4rSJHoRwozY0we-_P1NYwAFkyS6hn48_1X_SUpxIpOVbLzcIspVZRR9MZAqvQA5nNA6r10YJqtYE_gzmzvcW3CO9D1b9u3LdzfQSOJy5vc5iJWaF48VVgybbjUbQHAb1ArVqaLkKqUuvzArA85blx2ti1FYpRRgj6mCjUgGW84S4q0W_dYFk27Sut3JyP8QEfddDOuBv91TqkPSl41e10vFpk5HEGWXzoIg7d_EkZiJzdEKRZk_teA0l677jtM-_ZPWOsnhrsfi-lKCaccA
+
+###
+GET http://localhost:5270/groups
+###
+POST http://localhost:5270/groups
+Content-Type: application/json
+
+{
+    "name" : "new"
+}

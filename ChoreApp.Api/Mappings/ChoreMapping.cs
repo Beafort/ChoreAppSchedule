@@ -25,6 +25,7 @@ public static class ChoreMapping
 			chore.Name,
 			chore.Deadline,
 			chore.Done,
+			chore.AssignedUser != null ? chore.AssignedUser.Id : "Unassigned",
 			chore.CreatedAt
 		);
 	}

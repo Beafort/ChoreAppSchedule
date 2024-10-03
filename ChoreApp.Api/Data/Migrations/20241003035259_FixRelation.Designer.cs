@@ -3,6 +3,7 @@ using System;
 using ChoreApp.Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ChoreApp.Api.Data.Migrations
 {
     [DbContext(typeof(ChoreAppContext))]
-    partial class ChoreAppContextModelSnapshot : ModelSnapshot
+    [Migration("20241003035259_FixRelation")]
+    partial class FixRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,9 +45,6 @@ namespace ChoreApp.Api.Data.Migrations
                     b.Property<bool>("Done")
                         .HasColumnType("bool");
 
-                    b.Property<int?>("GroupId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -55,8 +55,6 @@ namespace ChoreApp.Api.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AssignedUserId");
-
-                    b.HasIndex("GroupId");
 
                     b.HasIndex("UserId");
 
@@ -72,7 +70,6 @@ namespace ChoreApp.Api.Data.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -301,10 +298,6 @@ namespace ChoreApp.Api.Data.Migrations
                         .HasForeignKey("AssignedUserId")
                         .OnDelete(DeleteBehavior.SetNull);
 
-                    b.HasOne("ChoreApp.Api.Entities.Group", null)
-                        .WithMany("Chores")
-                        .HasForeignKey("GroupId");
-
                     b.HasOne("ChoreApp.Api.Entities.User", null)
                         .WithMany("Chores")
                         .HasForeignKey("UserId");
@@ -376,11 +369,6 @@ namespace ChoreApp.Api.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("ChoreApp.Api.Entities.Group", b =>
-                {
-                    b.Navigation("Chores");
                 });
 
             modelBuilder.Entity("ChoreApp.Api.Entities.User", b =>

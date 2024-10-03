@@ -1,5 +1,4 @@
 D:\ChoreAppSchedule\choreapp.api\bin\Debug\net8.0\appsettings.Development.json
-D:\ChoreAppSchedule\choreapp.api\bin\Debug\net8.0\appsettings.json
 D:\ChoreAppSchedule\choreapp.api\bin\Debug\net8.0\ChoreApp.Api.exe
 D:\ChoreAppSchedule\choreapp.api\bin\Debug\net8.0\ChoreApp.Api.deps.json
 D:\ChoreAppSchedule\choreapp.api\bin\Debug\net8.0\ChoreApp.Api.runtimeconfig.json
