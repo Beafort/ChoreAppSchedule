@@ -11,12 +11,14 @@ Content-Type: application/json
 ###
 DELETE http://localhost:5270/chores/1
 ###
-PUT http://localhost:5270/chores/2
+PUT http://localhost:5270/chores/3
 Content-Type: application/json
 
 {
+    "id" : 4,
     "Name": "Null",
-    "deadline": "2024-09-09T17:26:22"
+    "deadline": "2024-11-09T17:26:22",
+    "done": true
 }
 ###
 POST http://localhost:5270/register
@@ -27,16 +29,16 @@ Content-Type: application/json
     "password": "Hieukdmcqn1!"
 }
 ###
-POST http://localhost:5270/user/register
+POST https://api.beafort.com/user/register
 Content-Type: application/json
 
 {
-    "email": "beafortworkm@gmail.com",
+    "email": "beafortwork@gmail.com",
     "password": "Hieukdmcqn1!",
     "name": "Hieu"
 }
 ###
-POST http://localhost:5270/login
+POST https://api.beafort.com/login
 Content-Type: application/json
 
 {

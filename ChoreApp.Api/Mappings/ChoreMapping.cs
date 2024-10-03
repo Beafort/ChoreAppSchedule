@@ -25,7 +25,6 @@ public static class ChoreMapping
 			chore.Name,
 			chore.Deadline,
 			chore.Done,
-			chore.AssignedUserId != null ? chore.AssignedUserId : "Unassigned",
 			chore.CreatedAt
 		);
 	}
@@ -44,7 +43,6 @@ public static class ChoreMapping
 			Id = id,
 			Name = chore.Name,
 			Deadline = chore.Deadline,
-			AssignedUserId = chore.AssignedUserId != null ? chore.AssignedUserId : null,
 			Done = chore.Done
 		};
 	}

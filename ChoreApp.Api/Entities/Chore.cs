@@ -9,6 +9,5 @@ public class Chore
     public DateTime Deadline { get; set; }
     public DateTime CreatedAt { get; set; }
     public virtual User? AssignedUser { get; set; }
-    public string? AssignedUserId { get; set; }
     public bool Done { get; set; }
 }

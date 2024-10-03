@@ -29,7 +29,7 @@ public static class UsersEndpoints
 				Email = registerDto.Email,
 				Name = registerDto.Name 
 			};
-
+			
 			var result = await userManager.CreateAsync(user, registerDto.Password);
 			
 			if (result.Succeeded)
@@ -49,15 +49,6 @@ public static class UsersEndpoints
 				return Results.NotFound();
 				
 			}	
-			if(user.ChoresId != null)
-			{
-				var chores = await dbContext.Chores
-				.Where(c => user.ChoresId.Contains(c.Id))
-				.ToListAsync();
-				user.Chores = chores;
-			}
-			
-			
 			return Results.Ok(user.ToUserSummary());		
 		}).RequireAuthorization();
 		group.MapDelete("/{id}", async (string id, UserManager<User> userManager, ChoreAppContext dbContext) => 
@@ -84,7 +75,7 @@ public static class UsersEndpoints
 				.Where(c => updatedUser.ChoreIds.Contains(c.Id))
 				.ToListAsync();
 			user.Chores = chores;
-			user.ChoresId = updatedUser.ChoreIds;
+			
 			
 			var result = await userManager.UpdateAsync(user);
 			if(result.Succeeded)

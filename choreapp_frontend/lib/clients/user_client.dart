@@ -12,7 +12,7 @@ class UserClient {
   
   Future<Map<String, String>> register(String email, String password, String name) async {
   var response = await http.post(
-    Uri.parse('http://10.0.2.2:5270/user/register'),
+    Uri.parse('$baseUrl/register'),
     headers: <String, String>{
       'Content-Type': 'application/json'
     },
@@ -51,7 +51,7 @@ class UserClient {
   //login
   Future<Map<String, String>> login(String email, String password) async {
     final response = await http.post(
-      Uri.parse('http://10.0.2.2:5270/login'),
+      Uri.parse('https://api.beafort.com/login'),
       headers: <String, String>{
         'Content-Type': 'application/json',
       },
@@ -88,7 +88,7 @@ class UserClient {
   
   Future<bool> refreshToken() async{
     var key = await storage.read(key: "refreshToken");
-    var response = await http.post(Uri.parse('http://10.0.2.2:5270/login'),
+    var response = await http.post(Uri.parse('https://222.255.119.23/login'),
       headers: <String, String>{
         'Content-Type': 'application/json',
       },
@@ -114,7 +114,7 @@ class UserClient {
   }
   Future<User?> getUser() async {
     String? key = await storage.read(key: "accessToken");
-    var response = await http.get(Uri.parse("http://10.0.2.2:5270/user/info"),
+    var response = await http.get(Uri.parse("$baseUrl/info"),
     headers: <String, String>{
         'Authorization': 'Bearer $key',
       },);
@@ -124,7 +124,7 @@ class UserClient {
     }else if(response.statusCode == 401){
       if(await refreshToken() == true){
         String? key = await storage.read(key: "accessToken");
-        response = await http.get(Uri.parse("http://10.0.2.2:5270/user/info"),
+        response = await http.get(Uri.parse("$baseUrl/info"),
         headers: <String, String>{
             'Authorization': 'Bearer $key',
           }
@@ -137,7 +137,7 @@ class UserClient {
   }
   Future<void> logout() async {
     String? key = await storage.read(key: "accessToken");
-    http.post(Uri.parse("http://10.0.2.2:5270/user/logout"),
+    http.post(Uri.parse("$baseUrl/logout"),
     headers: <String, String>{
             'Authorization': 'Bearer $key',
           }

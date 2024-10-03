@@ -6,7 +6,6 @@ namespace ChoreApp.Api.Dtos
         string Name,
         DateTime Deadline,
         bool Done,
-        string AssignedUserId,
         DateTime CreatedAt
     );
 }

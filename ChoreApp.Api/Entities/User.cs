@@ -5,8 +5,6 @@ public class User : IdentityUser
 {
 	
 	public string? Name { get; set; }
-	
-	public List<Chore>? Chores { get; set; }
-	
-	public List<int>? ChoresId { get; set; }
+    public virtual List<Group> Groups { get; set; } = new List<Group>();
+    public List<Chore>? Chores { get; set; } = new List<Chore>();
 }
